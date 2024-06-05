@@ -45,6 +45,7 @@ export default function ListaProdutos() {
                             <li key={produto.id} className="p-4 border rounded-md shadow-sm">
                                 <h2 className="text-xl font-bold">{produto.name}</h2>
                                 <p>Quantidade: {produto.quantidade}</p>
+                                <p>Editado em: {new Date(produto.editado_em).toLocaleString()}</p>
                             </li>
                         ))}
                     </ul>
