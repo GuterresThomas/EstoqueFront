@@ -76,6 +76,27 @@ export default function ListaProdutos() {
         return <p>Erro: {error}</p>;
     }
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/estoque/${id}`, {
+                method: 'DELETE',
+            });
+    
+            if (!response.ok) {
+                throw new Error('Erro ao deletar produto');
+            }
+    
+            // Remover o produto da lista localmente para evitar outra chamada à API
+            setProdutos((prevProdutos) => 
+                prevProdutos.filter((produto) => produto.id !== id)
+            );
+    
+            alert('Produto deletado com sucesso');
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
     return (
         <div className="flex justify-center items-center">
             <div className="w-full max-w-2xl p-4">
@@ -89,6 +110,7 @@ export default function ListaProdutos() {
                                 <p>Quantidade: {produto.quantidade}</p> 
                                 <p>Editado em: {new Date(produto.editado_em).toLocaleString()}</p>
                                 <Button className="p-2 m-2" onClick={() => handleEditQuantidade(produto.id)}>Editar Quantidade</Button>
+                                <Button className="p-2 m-2 bg-red-500 text-white" onClick={() => handleDelete(produto.id)}>Excluir Produto</Button>
                             </li>
                         ))}
                     </ul>
