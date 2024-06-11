@@ -88,7 +88,7 @@ export default function ListaProdutos() {
                                 <h2 className="text-xl font-bold">{produto.name}</h2>
                                 <p>Quantidade: {produto.quantidade}</p> 
                                 <p>Editado em: {new Date(produto.editado_em).toLocaleString()}</p>
-                                <button onClick={() => handleEditQuantidade(produto.id)}>Editar Quantidade</button>
+                                <Button className="p-2 m-2" onClick={() => handleEditQuantidade(produto.id)}>Editar Quantidade</Button>
                             </li>
                         ))}
                     </ul>
