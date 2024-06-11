@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
+import { Button } from "@/components/ui/button"
 
 export default function ListaProdutos() {
     const [produtos, setProdutos] = useState([]);
@@ -99,8 +100,8 @@ export default function ListaProdutos() {
                         <h2 className="text-xl font-bold mb-2">Editar Quantidade</h2>
                         <label htmlFor="novaQuantidade" className="block mb-2">Nova Quantidade:</label>
                         <input type="number" id="novaQuantidade" value={novaQuantidade} onChange={(e) => setNovaQuantidade(e.target.value)} className="border rounded-md p-2 mb-2" />
-                        <button onClick={handleSubmit} className="bg-blue-500 text-white px-4 py-2 rounded-md">Salvar</button>
-                        <button onClick={() => setModalOpen(false)} className="bg-red-500 text-white px-4 py-2 rounded-md ml-2">Cancelar</button>
+                        <Button onClick={handleSubmit} className=" m-2 px-4 py-2 rounded-md">Salvar</Button>
+                        <Button onClick={() => setModalOpen(false)} className=" m-2 px-4 py-2 rounded-md ml-2">Cancelar</Button>
                     </div>
                 </div>
             )}
